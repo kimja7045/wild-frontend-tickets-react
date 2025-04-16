@@ -18,7 +18,7 @@ npm start
 
 # TODO
 
-[ ] App 렌더링
+[ ] App 컴포넌트 렌더링
 [ ] Ticket 목록 조회
 [ ] Ticket 추가
 [ ] 특정 Ticket의 댓글 목록 조회
