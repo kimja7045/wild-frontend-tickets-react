@@ -11,3 +11,15 @@ npm i
 ```bash
 npm start
 ```
+
+# Tech Stack
+
+- React, Vitest, Typescript
+
+# TODO
+
+[ ] App 렌더링
+[ ] Ticket 목록 조회
+[ ] Ticket 추가
+[ ] 특정 Ticket의 댓글 목록 조회
+[ ] 댓글 추가
