@@ -1,7 +1,10 @@
+import { TicketForm } from './ticket/TicketForm';
+
 export const Main = () => {
   return (
     <main>
-      <h1>Main</h1>
+      <div>ticketList</div>
+      <TicketForm />
     </main>
   );
 };
