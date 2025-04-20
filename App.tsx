@@ -1,7 +1,11 @@
+import { Header } from './src/Header';
+import { Main } from './src/Main';
+
 export const App = () => {
   return (
     <div>
-      <h1>App</h1>
+      <Header />
+      <Main />
     </div>
   );
 };
