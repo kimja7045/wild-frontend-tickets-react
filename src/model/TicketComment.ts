@@ -1,4 +1,4 @@
-export interface Comment {
+export interface TicketComment {
   id: number;
   content: string;
 }
