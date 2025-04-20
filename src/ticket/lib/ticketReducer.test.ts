@@ -39,7 +39,7 @@ describe('ticket reducer', () => {
         id: 1,
       });
 
-      expect(nextTickets).toEqual([{ ...prevTickets[0], status: false }]);
+      expect(nextTickets).toEqual([{ ...prevTickets[0], status: 'closed' }]);
     });
   });
 
@@ -61,7 +61,7 @@ describe('ticket reducer', () => {
       });
 
       expect(nextTickets).toEqual([
-        { ...prevTickets[0], comments: [{ id: 1, text: 'comment' }] },
+        { ...prevTickets[0], comments: [{ id: 1, content: 'comment' }] },
       ]);
     });
   });

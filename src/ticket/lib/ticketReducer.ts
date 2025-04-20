@@ -1,30 +1,33 @@
 import { Ticket } from '../../model/Ticket';
 
-type TicketAction =
+export type TicketAction =
   | TicketAddAction
   | TicketToggleAction
   | TicketAddCommentAction;
 
-export const ticketReducer = (state: Ticket[], action: TicketAction) => {
+export const ticketReducer = (
+  tickets: Ticket[],
+  action: TicketAction,
+): Ticket[] => {
   switch (action.type) {
     case 'ADD_TICKET':
-      return [
-        ...state,
-        {
-          ...action.payload,
-          id: state.length + 1,
-          status: 'open',
-          comments: [],
-        },
-      ];
+      const newTicket: Ticket = {
+        ...action.payload,
+        id: tickets.length + 1,
+        status: 'open',
+        comments: [],
+      };
+
+      return [...tickets, newTicket];
     case 'TOGGLE_TICKET':
-      return state.map((ticket) =>
+      const newTickets: Ticket[] = tickets.map((ticket) =>
         ticket.id === action.id
-          ? { ...ticket, status: !ticket.status }
+          ? { ...ticket, status: ticket.status === 'open' ? 'closed' : 'open' }
           : ticket,
       );
+      return newTickets;
     case 'ADD_COMMENT':
-      return state.map((ticket) =>
+      const newTicketList: Ticket[] = tickets.map((ticket) =>
         ticket.id === action.payload.ticketId
           ? {
               ...ticket,
@@ -32,14 +35,15 @@ export const ticketReducer = (state: Ticket[], action: TicketAction) => {
                 ...ticket.comments,
                 {
                   id: ticket.comments.length + 1,
-                  text: action.payload.comment,
+                  content: action.payload.comment,
                 },
               ],
             }
           : ticket,
       );
+      return newTicketList;
     default:
-      return state;
+      return tickets;
   }
 };
 
