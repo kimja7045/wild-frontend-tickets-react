@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import { Ticket } from '../../model/Ticket';
-import { reducer } from './reducer';
+import { ticketReducer } from './ticketReducer';
 
-describe('reducer', () => {
+describe('ticket reducer', () => {
   describe('addTicket', () => {
     it('adds a Ticket', () => {
       const prevTickets: Ticket[] = [];
@@ -11,7 +11,7 @@ describe('reducer', () => {
         description: 'test',
       };
 
-      const nextTickets = reducer(prevTickets, {
+      const nextTickets = ticketReducer(prevTickets, {
         type: 'ADD_TICKET',
         payload: newTicket,
       });
@@ -34,7 +34,7 @@ describe('reducer', () => {
         },
       ];
 
-      const nextTickets = reducer(prevTickets, {
+      const nextTickets = ticketReducer(prevTickets, {
         type: 'TOGGLE_TICKET',
         id: 1,
       });
@@ -55,7 +55,7 @@ describe('reducer', () => {
         },
       ];
 
-      const nextTickets = reducer(prevTickets, {
+      const nextTickets = ticketReducer(prevTickets, {
         type: 'ADD_COMMENT',
         payload: { ticketId: 1, comment: 'comment' },
       });

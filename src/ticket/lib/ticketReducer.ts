@@ -5,7 +5,7 @@ type TicketAction =
   | TicketToggleAction
   | TicketAddCommentAction;
 
-export const reducer = (state: Ticket[], action: TicketAction) => {
+export const ticketReducer = (state: Ticket[], action: TicketAction) => {
   switch (action.type) {
     case 'ADD_TICKET':
       return [
