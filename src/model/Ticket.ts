@@ -7,3 +7,15 @@ export interface Ticket {
   status: 'open' | 'closed';
   comments: TicketComment[];
 }
+
+export interface TicketActions {
+  addTicket({
+    title,
+    description,
+  }: {
+    title: string;
+    description: string;
+  }): void;
+
+  toggleTicketStatus(id: number): void;
+}
