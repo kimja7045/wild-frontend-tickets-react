@@ -29,6 +29,16 @@ export const ticketReducer = (
       );
       return newTickets;
     case 'ADD_COMMENT':
+      const commentIds = tickets.reduce(
+        (commentIds, ticket) => [
+          ...commentIds,
+          ...ticket.comments.map((comment) => comment.id),
+        ],
+        [] as number[],
+      );
+
+      const id = Math.max(...commentIds, 0) + 1;
+
       const newTicketList: Ticket[] = tickets.map((ticket) =>
         ticket.id === action.payload.ticketId
           ? {
@@ -36,7 +46,7 @@ export const ticketReducer = (
               comments: [
                 ...ticket.comments,
                 {
-                  id: ticket.comments.length + 1,
+                  id,
                   content: action.payload.comment,
                 },
               ],

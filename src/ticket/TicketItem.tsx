@@ -1,4 +1,6 @@
 import { Ticket } from '../model/Ticket';
+import { TicketCommentForm } from '../ticketComment/TicketCommentForm';
+import { TicketCommentList } from '../ticketComment/TicketCommentList';
 import { Dispatch } from './lib/ticketReducer';
 
 export const TicketItem = ({
@@ -19,6 +21,8 @@ export const TicketItem = ({
       <button className="status" onClick={handleClick}>
         {ticket.status === 'open' ? 'Open' : 'Closed'}
       </button>
+      <TicketCommentList comments={ticket.comments} />
+      <TicketCommentForm ticketId={ticket.id} dispatch={dispatch} />
     </li>
   );
 };
