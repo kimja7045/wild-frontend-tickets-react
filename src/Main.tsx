@@ -1,13 +1,15 @@
-import { useTickets } from './ticket/hook/useTickets';
+import { useReducer } from 'react';
 import { TicketForm } from './ticket/TicketForm';
+import { TicketList } from './ticket/TicketList';
+import { ticketReducer } from './ticket/lib/ticketReducer';
 
 export const Main = () => {
-  const { tickets, ticketActions } = useTickets();
+  const [tickets, dispatch] = useReducer(ticketReducer, []);
 
   return (
     <main>
-      <div>ticketList</div>
-      <TicketForm addTicket={ticketActions.addTicket} />
+      <TicketList tickets={tickets} dispatch={dispatch} />
+      <TicketForm dispatch={dispatch} />
     </main>
   );
 };

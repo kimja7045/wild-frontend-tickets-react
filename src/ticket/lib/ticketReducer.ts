@@ -5,6 +5,8 @@ export type TicketAction =
   | TicketToggleAction
   | TicketAddCommentAction;
 
+export type Dispatch = (action: TicketAction) => void;
+
 export const ticketReducer = (
   tickets: Ticket[],
   action: TicketAction,

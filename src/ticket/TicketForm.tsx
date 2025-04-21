@@ -2,19 +2,10 @@ import { FormEvent } from 'react';
 import { TextField } from '../component/TextField';
 import { TextArea } from '../component/TextArea';
 import { SubmitButton } from '../component/SubmitButton';
+import { Dispatch } from './lib/ticketReducer';
 
 // Organism 수준 컴포넌트
-export const TicketForm = ({
-  addTicket,
-}: {
-  addTicket: ({
-    title,
-    description,
-  }: {
-    title: string;
-    description: string;
-  }) => void;
-}) => {
+export const TicketForm = ({ dispatch }: { dispatch: Dispatch }) => {
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
 
@@ -23,7 +14,7 @@ export const TicketForm = ({
     const title = formData.get('title') as string;
     const description = formData.get('description') as string;
 
-    addTicket({ title, description });
+    dispatch({ type: 'ADD_TICKET', payload: { title, description } });
 
     form.reset();
   };
